@@ -1,5 +1,6 @@
-import { initializeApp as firebaseInit} from "firebase/app";
+import { initializeApp as firebaseInit } from "firebase/app";
 import { createUserWithEmailAndPassword, getAuth as getAuthOfApp } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 // Firebase config needed to initialize Firebase app
 const firebaseConfig = {
@@ -20,17 +21,31 @@ const FirebaseApp = firebaseInit(firebaseConfig)
 /**************************/
 
 // SignUp with email and password util.
-const SignUpWithEmailPassword = (email, password) => {
+const SignUpWithEmailPassword = async (email, password) => {
+
+    try {
+        // TODO: Response Management of `SignUpWithEmailPassword` Util
+        const user = await createUserWithEmailAndPassword(getAuthOfApp(FirebaseApp), email, password)
+
+        console.log('user', user)
+    } catch (err) {
+        console.log('code', err.code)
+        console.log('message', err.message)
+    }
+}
+
+// TODO: Login With Email and Password
+const LoginWithEmailPassword = async (email, password) => {
     
-    // TODO: Response Management of SignUpWithEmailPassword Util
-    createUserWithEmailAndPassword(getAuthOfApp(FirebaseApp), email, password)
-        .then(user => {
-            console.log('user', user)
-        })
-        .catch(err => {
-            console.log('code', err.code)
-            console.log('message', err.message)
-        })
+    try {
+        // TODO: Response Management of `LoginWithEmailPassword` Util
+        const user = await signInWithEmailAndPassword(getAuthOfApp(FirebaseApp), email, password)
+
+        console.log('user', user)
+    } catch (err) {
+        console.log('code', err.code)
+        console.log('message', err.message)
+    }
 }
 
 /**********************************/
@@ -39,7 +54,8 @@ const SignUpWithEmailPassword = (email, password) => {
 
 export {
     FirebaseApp,
-    SignUpWithEmailPassword
+    SignUpWithEmailPassword,
+    LoginWithEmailPassword
 }
-  
+
 

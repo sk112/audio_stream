@@ -1,8 +1,8 @@
 import { initializeApp as firebaseAdminInit } from 'firebase-admin/app';
 import { getAuth as getAuthOfAdmin } from 'firebase-admin/auth'
 
-import  pkg from "firebase-admin"
-const {credential, auth } = pkg
+import pkg from "firebase-admin"
+const { credential, auth } = pkg
 
 // dotenv configuration
 import dotenv from 'dotenv';
@@ -14,21 +14,23 @@ const FirebaseAdminApp = firebaseAdminInit({
   credential: credential.cert(process.env.GOOGLE_APPLICATION_CREDENTIALS),
 });
 
-// Socket Authentication Middleware to verify the token
-function SocketAuthMiddleware(socket, next) {
+/*****************
+ **** UTILS ******
+ *****************/
 
-  const token = socket.request._query.token
-  // console.log('Socket Auth Middleware....', token)
-
+async function verifyToken(next = null) {
+  // Verify token logic
   getAuthOfAdmin(FirebaseAdminApp)
-      .verifyIdToken(token)
-      .then(value => {
-          next()
-      })
-      .catch(err => {
-          console.error('socket token auth error: ', err)
-          next(new Error('Socket Token Error'))
-      })
+    .verifyIdToken(token)
+    .then((decodedToken) => {
+      const uid = decodedToken.uid;
+      console.log('in middle: ', uid)
+      if(next)next();
+    })
+    .catch((error) => {
+      console.error(err)
+      res.status(404).send('Auth Error')
+    });
 }
 
 export {

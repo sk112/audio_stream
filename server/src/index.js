@@ -3,7 +3,7 @@ import { createServer } from 'http'
 import { Server } from "socket.io"
 import cors from 'cors';
 import { Authenticate } from './middlewares/auth.js'
-import { SocketAuthMiddleware } from './lib/firebase-admin.js';
+import { SocketAuthMiddleware } from './middlewares/auth.js';
 import { createSocket } from './lib/socket.js';
 import { signUpHandler } from './handlers/auth.js';
 

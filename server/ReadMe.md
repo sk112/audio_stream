@@ -8,6 +8,6 @@
   - [X] firebase-admin.js
   - [X] firebase-app.js
   - [ ] socket.js
-- [ ] middlewares
-  - [ ] auth.js
+- [X] middlewares
+  - [X] auth.js
 - [ ] index.js 

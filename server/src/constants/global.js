@@ -1,14 +1,10 @@
 
 // WILD URLS to avoid Auth Middleware check.
-const WILD_URLS = [
+export const WILD_URLS = [
     "/signup",
     "/auth/signup",
 ]
 
-/*********************************/
-/************  EXPORTS ***********/
-/*********************************/
+export const FIREBASE_APP_NAME = "FirebaseApp"
+export const FIREBASE_ADMIN_APP_NAME = "FirebaseAdminApp"
 
-export {
-    WILD_URLS
-}

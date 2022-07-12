@@ -40,7 +40,7 @@ function joinRoom(roomId, userId, peerid, io, socket) {
     if (rooms[roomId] !== null)
         socket.emit('initial-joined-contacts', rooms[roomId])
 
-    //TODO: What if room is not created?
+    //TODO What if room is not created?
     socket.join(roomId)
 
     if (rooms[roomId] === undefined)

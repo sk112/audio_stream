@@ -25,7 +25,7 @@ const FirebaseApp = firebaseInit(firebaseConfig, FIREBASE_APP_NAME)
 const SignUpWithEmailPassword = async (email, password) => {
 
     try {
-        // TODO: Response Management of `SignUpWithEmailPassword` Util
+        // TODO Response Management of `SignUpWithEmailPassword` Util
         const user = await createUserWithEmailAndPassword(getAuthOfApp(FirebaseApp), email, password)
 
         console.log('user', user)
@@ -35,11 +35,11 @@ const SignUpWithEmailPassword = async (email, password) => {
     }
 }
 
-// TODO: Login With Email and Password
+// TODO Login With Email and Password
 const LoginWithEmailPassword = async (email, password) => {
     
     try {
-        // TODO: Response Management of `LoginWithEmailPassword` Util
+        // TODO Response Management of `LoginWithEmailPassword` Util
         const user = await signInWithEmailAndPassword(getAuthOfApp(FirebaseApp), email, password)
 
         console.log('user', user)

@@ -19,5 +19,7 @@
         "**/Thumbs.db": true,
         "**/.vscode": true
     },
-    "explorerExclude.backup": null
+    "explorerExclude.backup": null,
+    "todo-tree.tree.showBadges": true,
+    "todo-tree.tree.showCountsInTree": true
 }

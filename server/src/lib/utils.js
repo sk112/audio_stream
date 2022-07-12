@@ -23,7 +23,7 @@ const getAuthTokenFromHeader = (req, isSocket = false) => {
     else
         token = req.header('Authorization').split(' ')[1]
 
-    // TODO: Bearer should be present else invalid Authorization header.
+    // TODO Bearer should be present else invalid Authorization header.
 
     return token;
 }

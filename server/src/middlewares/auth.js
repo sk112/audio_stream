@@ -30,7 +30,7 @@ function Authenticate(req, res, next) {
     }
 
     verifyToken(token, next);
-    // TODO: verify if next() can be moved to getAuth.then() with appropriate error response
+    // TODO verify if next() can be moved to getAuth.then() with appropriate error response
     next()
 }
 
@@ -48,7 +48,7 @@ function SocketAuthMiddleware(socket, next) {
     const token = getAuthTokenFromHeader(socket, true)
     verifyToken(token, next);
 
-    // TODO: Token Error Response management
+    // TODO Token Error Response management
 }
 
 /****** EXPORTS ********/
